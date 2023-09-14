@@ -56,14 +56,14 @@ void lpg_event(const char *event)
     Serial.println("Connection failed");
     return;
   }  
-  // We now create a URI for the request
+  // We now create URL string for request to IFTTT
   String url = "/trigger/";
   url += event;
   url += "/with/key/";
   url += privateKey;  
   Serial.print("Requesting URL: ");
   Serial.println(url);  
-  // This will send the request to the server
+  // Send request
   client.print(String("GET ") + url + " HTTP/1.1\r\n" +
                "Host: " + host + "\r\n" + 
                "Connection: close\r\n\r\n");
